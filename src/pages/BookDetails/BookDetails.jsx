@@ -1,5 +1,9 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addToStoredDb } from '../../utility/AddToDb';
+
+
+
 
 const BookDetails = () => {
     
@@ -7,7 +11,11 @@ const BookDetails = () => {
     const bookId = parseInt(id);
     const data =useLoaderData();
     const singleBook=data.find(book=>book.bookId===bookId);
-    const {bookName,image,author,publisher,review,tags,yearOfPublishing,totalPages}=singleBook;
+    const {bookName,image,author,publisher,review,tags,yearOfPublishing,totalPages}=singleBook || {};
+
+    const handleMarkAsRead = id=>{
+     addToStoredDb(id)
+    }
     return (
         // <div>
         //     {/* <div><img src={image} alt="" /></div> */}
@@ -35,7 +43,7 @@ const BookDetails = () => {
      <p>year of Publisher : {yearOfPublishing}</p>
      <p>Rating </p>
     <div className="card-actions">
-      <button className="btn btn-primary">Read</button>
+      <button onClick={()=>handleMarkAsRead(id)} className="btn btn-primary">Mark as Read</button>
       <button className="btn btn-primary">Wishlist</button>
     </div>
   </div>
