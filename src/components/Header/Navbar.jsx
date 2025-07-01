@@ -5,8 +5,9 @@ const Navbar = () => {
     const links=<>
        <Link to={'/'}><li className='m-2'>Home</li></Link>
        <Link to={'/About'}><li className='m-2'>About</li></Link>
+       <Link to={'/readList'}><li className='m-2'>ReadList</li></Link>
     </>
-    return (
+    return (  
        <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
